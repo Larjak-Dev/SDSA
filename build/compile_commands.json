@@ -1,0 +1,32 @@
+[
+{
+  "directory": "C:/Coding/SDSa/build",
+  "command": "/C/msys64/mingw64/bin/g++.exe  @CMakeFiles/SDS.dir/includes_CXX.rsp -g -std=c++23 -o CMakeFiles/SDS.dir/main.cpp.obj -c /C/Coding/SDSa/main.cpp",
+  "file": "C:/Coding/SDSa/main.cpp",
+  "output": "CMakeFiles/SDS.dir/main.cpp.obj"
+},
+{
+  "directory": "C:/Coding/SDSa/build",
+  "command": "/C/msys64/mingw64/bin/g++.exe  @CMakeFiles/SDS.dir/includes_CXX.rsp -g -std=c++23 -o CMakeFiles/SDS.dir/AppHandler.cpp.obj -c /C/Coding/SDSa/AppHandler.cpp",
+  "file": "C:/Coding/SDSa/AppHandler.cpp",
+  "output": "CMakeFiles/SDS.dir/AppHandler.cpp.obj"
+},
+{
+  "directory": "C:/Coding/SDSa/build",
+  "command": "/C/msys64/mingw64/bin/g++.exe  @CMakeFiles/SDS.dir/includes_CXX.rsp -g -std=c++23 -o CMakeFiles/SDS.dir/GameState.cpp.obj -c /C/Coding/SDSa/GameState.cpp",
+  "file": "C:/Coding/SDSa/GameState.cpp",
+  "output": "CMakeFiles/SDS.dir/GameState.cpp.obj"
+},
+{
+  "directory": "C:/Coding/SDSa/build",
+  "command": "/C/msys64/mingw64/bin/g++.exe  @CMakeFiles/SDS.dir/includes_CXX.rsp -g -std=c++23 -o CMakeFiles/SDS.dir/ShooterState.cpp.obj -c /C/Coding/SDSa/ShooterState.cpp",
+  "file": "C:/Coding/SDSa/ShooterState.cpp",
+  "output": "CMakeFiles/SDS.dir/ShooterState.cpp.obj"
+},
+{
+  "directory": "C:/Coding/SDSa/build",
+  "command": "/C/msys64/mingw64/bin/g++.exe  @CMakeFiles/SDS.dir/includes_CXX.rsp -g -std=c++23 -o CMakeFiles/SDS.dir/LevelOne.cpp.obj -c /C/Coding/SDSa/LevelOne.cpp",
+  "file": "C:/Coding/SDSa/LevelOne.cpp",
+  "output": "CMakeFiles/SDS.dir/LevelOne.cpp.obj"
+}
+]
