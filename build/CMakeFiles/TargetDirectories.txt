@@ -1,3 +1,0 @@
-C:/Coding/SDSa/build/CMakeFiles/SDS.dir
-C:/Coding/SDSa/build/CMakeFiles/edit_cache.dir
-C:/Coding/SDSa/build/CMakeFiles/rebuild_cache.dir
