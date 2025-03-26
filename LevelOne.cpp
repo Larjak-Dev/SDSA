@@ -27,7 +27,7 @@ void LevelOne::init()
     basicFairy.smartEntityStruct.size = sf::Vector2f(100,100);
     basicFairy.smartEntityStruct.drawable.color = sf::Color::Green;
     basicFairy.enterType = ScreenEnterType::TopIn;
-    basicFairy.enterDuration = 1.0f;
+    basicFairy.enterDuration = 2.0f;
 
     auto entityPtr = std::make_unique<ShooterEntity>();
     entityPtr->constructEntity(basicFairy);

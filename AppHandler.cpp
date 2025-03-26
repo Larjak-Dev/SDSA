@@ -137,7 +137,7 @@ void AppHandler::run()
         
 
         // Clear the window
-        window.clear(sf::Color::Red);
+        window.clear(sf::Color::Magenta);
 
         if(this->currentFrameState != nullptr) {
             this->currentFrameState->tick(deltaTime);

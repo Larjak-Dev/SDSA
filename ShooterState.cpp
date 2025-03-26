@@ -1,6 +1,6 @@
 #include "ShooterState.hpp"
 
-ShooterEntity::ShooterEntity()
+ShooterEntity::ShooterEntity() : SmartEntity(), enterType(ScreenEnterType::None), enterDuration(0), isFighting(false)
 {
 }
 
@@ -27,6 +27,7 @@ void ShooterEntity::tick(float dT)
     {
         this->tickFight(dT);
     }
+    SmartEntity::tick(dT);
 }
 
 void ShooterEntity::init(BatchRenderer *batchRenderer)
@@ -43,6 +44,7 @@ void ShooterEntity::init(BatchRenderer *batchRenderer)
     } else if (this->enterType == ScreenEnterType::TopIn) {
         auto event = std::make_unique<MoveToPosEaseEvent>();
         event->durationTime = this->enterDuration;
+        event->easeDuration = this->enterDuration;
         event->easeMoveType = EaseMoveType::EaseOutBack;
         event->willStopOnDone = true;
         event->startPos = sf::Vector2f(this->position.x, -this->size.y);
@@ -52,7 +54,7 @@ void ShooterEntity::init(BatchRenderer *batchRenderer)
     }
 }
 
-ShooterState::ShooterState()
+ShooterState::ShooterState() : GameState()
 {
 }
 
@@ -62,16 +64,15 @@ ShooterState::~ShooterState()
 
 void ShooterState::render(sf::RenderTarget *window)
 {
+    this->GameState::render(window);
 }
 
 void ShooterState::handleInput()
 {
-}
-
-void ShooterState::init()
-{
+    this->GameState::handleInput();
 }
 
 void ShooterState::tick(float dT)
 {
+    this->GameState::tick(dT);
 }

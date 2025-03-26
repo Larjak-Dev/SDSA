@@ -9,8 +9,8 @@ enum class ScreenEnterType {
 
 struct ShooterEntityStruct {
     SmartEntityStruct smartEntityStruct;
-    ScreenEnterType enterType;
-    float enterDuration;
+    ScreenEnterType enterType = ScreenEnterType::None;
+    float enterDuration = 0;
 };
 
 class ShooterEntity : public SmartEntity {
@@ -34,8 +34,6 @@ public:
 
     ShooterState();
     ~ShooterState();
-    void init();
-
     void render(sf::RenderTarget *window);
     void handleInput();
     void tick(float dT);

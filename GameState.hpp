@@ -9,12 +9,13 @@ class Entity {
     sf::Vector2f position;
     sf::Vector2f velocity;
     sf::Vector2f acceleration;
-    bool isInit;
+    bool isInit = false;
 
     Entity();
     ~Entity();
 
     virtual void tick(float dT);
+    
 
     //Rendering
     BatchRenderer* batchRenderer;
@@ -22,16 +23,17 @@ class Entity {
     std::list<RectDrawable*>::iterator renderAddress;
     void updateDrawable();
     virtual void init(BatchRenderer* batchRenderer);
+    
 };
 
 /// ENTITY EVENTS
 
 class EntityEvent {
 public:
-    bool hasDuration;
-    float durationTime;
-    float timePassed;
-    bool willStopOnDone;
+    bool hasDuration = true;
+    float durationTime = 1;
+    float timePassed = 0;
+    bool willStopOnDone = true;
 
 
     EntityEvent();
@@ -50,7 +52,7 @@ class MoveToPosEvent : public EntityEvent {
 public:
     sf::Vector2f targetPos;
     MoveType moveType;
-    float speed;
+    float speed = 1;
 
     MoveToPosEvent();
 
@@ -66,7 +68,7 @@ public:
     sf::Vector2f startPos;
     sf::Vector2f targetPos;
     EaseMoveType easeMoveType;
-    float easeDuration;
+    float easeDuration = 1;
 
     MoveToPosEaseEvent();
 
@@ -78,7 +80,7 @@ class HitBox {
 };
 
 struct SmartEntityStruct {
-    sf::Vector2f size;
+    sf::Vector2f size = sf::Vector2f(100,100);
     RectDrawable drawable;
     HitBox hitBox;
     sf::Vector2f position;
@@ -87,7 +89,7 @@ struct SmartEntityStruct {
 
 class SmartEntity : public Entity {
 public:
-    float timePassed;
+    float timePassed = 0;
     std::list<std::unique_ptr<EntityEvent>> events; // List of active events
     std::queue<std::unique_ptr<EntityEvent>> eventQueue; // Queued event that is going to happen 
 

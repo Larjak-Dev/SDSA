@@ -20,6 +20,7 @@ void Entity::init(BatchRenderer* batchRenderer)
 {
     this->batchRenderer = batchRenderer;
     this->renderAddress = this->batchRenderer->stageRect(&this->drawable);
+    this->isInit = true;
 }
 
 void Entity::updateDrawable()
@@ -161,7 +162,7 @@ void SmartEntity::tickFight(float dT)
 
 // GameState
 
-GameState::GameState() : batchRenderer(), timePassed(0)
+GameState::GameState() : FrameState(), batchRenderer(), timePassed(0)
 {
 }
 
