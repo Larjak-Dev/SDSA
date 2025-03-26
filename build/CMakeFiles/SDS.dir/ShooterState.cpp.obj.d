@@ -1,7 +1,6 @@
-CMakeFiles/SDS.dir/LevelOne.cpp.obj: C:/Coding/SDSa/LevelOne.cpp \
- C:/Coding/SDSa/LevelOne.hpp C:/Coding/SDSa/ShooterState.hpp \
- C:/Coding/SDSa/GameState.hpp C:/Coding/SDSa/AppHandler.hpp \
- C:/Coding/SDSa/include/SFML/Graphics.hpp \
+CMakeFiles/SDS.dir/ShooterState.cpp.obj: C:/Coding/SDSa/ShooterState.cpp \
+ C:/Coding/SDSa/ShooterState.hpp C:/Coding/SDSa/GameState.hpp \
+ C:/Coding/SDSa/AppHandler.hpp C:/Coding/SDSa/include/SFML/Graphics.hpp \
  C:/Coding/SDSa/include/SFML/Window.hpp \
  C:/Coding/SDSa/include/SFML/System.hpp \
  C:/Coding/SDSa/include/SFML/Config.hpp \

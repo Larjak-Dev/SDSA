@@ -127,8 +127,7 @@ bool MoveToPosEaseEvent::tick(float dT, Entity *entity)
 }
 
 
-SmartEntity::SmartEntity() : Entity(), timePassed(0), 
-isFighting(false), enterType(ScreenEnterType::None), enterDuration(0), enterEvent(nullptr)
+SmartEntity::SmartEntity() : Entity(), timePassed(0)
 {
     
 }
@@ -146,45 +145,15 @@ void SmartEntity::constructEntity(SmartEntityStruct data)
     this->drawable.sprite = data.sprite;
 
     this->position = data.position;
-    this->enterType = data.enterType;
-    this->enterDuration = data.enterDuration;
 }
 
 void SmartEntity::init(BatchRenderer* br)
 {
     this->Entity::init(br);
-    if(this->enterType == ScreenEnterType::None)
-    {
-        auto event = std::make_unique<MoveToPosEvent>();
-        event->durationTime = 0;
-        event->targetPos = this->position;
-        event->moveType = MoveType::Instant;
-
-        this->enterEvent = std::move(event);
-    } else if (this->enterType == ScreenEnterType::TopIn) {
-        auto event = std::make_unique<MoveToPosEaseEvent>();
-        event->durationTime = this->enterDuration;
-        event->easeMoveType = EaseMoveType::EaseOutBack;
-        event->willStopOnDone = true;
-        event->startPos = sf::Vector2f(0, -100);
-        event->targetPos = this->position;
-
-        this->enterEvent = std::move(event);
-    }
 }
 
 void SmartEntity::tick(float dT)
 {
-    if(this->timePassed > this->enterDuration) {
-        this->isFighting = true;
-    } else if (enterEvent != nullptr) {
-        this->enterEvent->tick(dT, this);
-    }
-
-    if(this->isFighting)
-    {
-        this->tickFight(dT);
-    }
     this->Entity::tick(dT);
 }
 

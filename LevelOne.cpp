@@ -1,6 +1,6 @@
 #include "LevelOne.hpp"
 
-LevelOne::LevelOne() : GameState()
+LevelOne::LevelOne() : ShooterState()
 {
     
 }
@@ -19,7 +19,7 @@ void LevelOne::handleInput()
     this->GameState::handleInput();
 }
 
-SmartEntity fairy;
+ShooterEntity fairy;
 
 void LevelOne::init()
 {
@@ -28,7 +28,7 @@ void LevelOne::init()
     fairy.drawable.color = sf::Color::Green;
     fairy.enterType = ScreenEnterType::TopIn;
 
-    auto entityPtr = std::make_unique<SmartEntity>();
+    auto entityPtr = std::make_unique<ShooterEntity>();
     (*entityPtr) = fairy;
     this->addEntity(std::move(entityPtr));
 }

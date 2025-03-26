@@ -1,6 +1,7 @@
 #pragma once
 #include "AppHandler.hpp"
 #include <memory>
+#include <queue>
 
 class Entity {
     public:
@@ -81,14 +82,14 @@ struct SmartEntityStruct {
     sf::Color color;
     Sprite sprite;
     HitBox hitBox;
+    sf::Vector2f position;
 };
 
 class SmartEntity : public Entity {
 public:
     float timePassed;
-    std::list<std::unique_ptr<EntityEvent>> events;
-
-
+    std::list<std::unique_ptr<EntityEvent>> events; // List of active events
+    std::queue<std::unique_ptr<EntityEvent>> eventQueue; // Queued event that is going to happen 
 
     SmartEntity();
     ~SmartEntity();

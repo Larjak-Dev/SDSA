@@ -287,8 +287,8 @@ CMakeFiles/SDS.dir/main.cpp.obj: C:/Coding/SDSa/main.cpp \
  C:/msys64/mingw64/include/c++/14.2.0/tr1/poly_hermite.tcc \
  C:/msys64/mingw64/include/c++/14.2.0/tr1/poly_laguerre.tcc \
  C:/msys64/mingw64/include/c++/14.2.0/tr1/riemann_zeta.tcc \
- C:/Coding/SDSa/LevelOne.hpp C:/Coding/SDSa/GameState.hpp \
- C:/msys64/mingw64/include/c++/14.2.0/memory \
+ C:/Coding/SDSa/LevelOne.hpp C:/Coding/SDSa/ShooterState.hpp \
+ C:/Coding/SDSa/GameState.hpp C:/msys64/mingw64/include/c++/14.2.0/memory \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stl_raw_storage_iter.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/align.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/unique_ptr.h \

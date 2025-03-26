@@ -1,7 +1,7 @@
 #pragma once
-#include "GameState.hpp"
+#include "ShooterState.hpp"
 
-class LevelOne : public GameState {
+class LevelOne : public ShooterState {
 public:
     LevelOne();
     ~LevelOne();
