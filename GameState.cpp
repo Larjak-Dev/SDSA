@@ -141,9 +141,7 @@ SmartEntity::~SmartEntity()
 void SmartEntity::constructEntity(SmartEntityStruct data)
 {
     this->size = data.size;
-    this->drawable.color = data.color;
-    this->drawable.sprite = data.sprite;
-
+    this->drawable = data.drawable;
     this->position = data.position;
 }
 

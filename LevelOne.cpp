@@ -19,17 +19,18 @@ void LevelOne::handleInput()
     this->GameState::handleInput();
 }
 
-ShooterEntity fairy;
+ShooterEntityStruct basicFairy;
 
 void LevelOne::init()
 {
-    fairy.position = sf::Vector2f(300,300);
-    fairy.size = sf::Vector2f(100,100);
-    fairy.drawable.color = sf::Color::Green;
-    fairy.enterType = ScreenEnterType::TopIn;
+    basicFairy.smartEntityStruct.position = sf::Vector2f(300,300);
+    basicFairy.smartEntityStruct.size = sf::Vector2f(100,100);
+    basicFairy.smartEntityStruct.drawable.color = sf::Color::Green;
+    basicFairy.enterType = ScreenEnterType::TopIn;
+    basicFairy.enterDuration = 1.0f;
 
     auto entityPtr = std::make_unique<ShooterEntity>();
-    (*entityPtr) = fairy;
+    entityPtr->constructEntity(basicFairy);
     this->addEntity(std::move(entityPtr));
 }
 

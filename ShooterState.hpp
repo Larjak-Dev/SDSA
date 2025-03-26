@@ -7,7 +7,8 @@ enum class ScreenEnterType {
     FadeIn
 };
 
-struct ShooterEntityStruct : SmartEntityStruct {
+struct ShooterEntityStruct {
+    SmartEntityStruct smartEntityStruct;
     ScreenEnterType enterType;
     float enterDuration;
 };
@@ -22,9 +23,10 @@ class ShooterEntity : public SmartEntity {
 
         ShooterEntity();
         ~ShooterEntity();
+        void constructEntity(ShooterEntityStruct data);
+        void init(BatchRenderer* batchRenderer);
 
         void tick(float dT);
-        void init(BatchRenderer* batchRenderer);
 };
 
 class ShooterState : public GameState {
@@ -32,10 +34,9 @@ public:
 
     ShooterState();
     ~ShooterState();
-    void constructEntity(ShooterEntityStruct data);
+    void init();
 
     void render(sf::RenderTarget *window);
     void handleInput();
-    void init();
     void tick(float dT);
 };

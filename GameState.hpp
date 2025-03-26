@@ -79,10 +79,10 @@ class HitBox {
 
 struct SmartEntityStruct {
     sf::Vector2f size;
-    sf::Color color;
-    Sprite sprite;
+    RectDrawable drawable;
     HitBox hitBox;
     sf::Vector2f position;
+
 };
 
 class SmartEntity : public Entity {

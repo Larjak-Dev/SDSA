@@ -8,6 +8,13 @@ ShooterEntity::~ShooterEntity()
 {
 }
 
+void ShooterEntity::constructEntity(ShooterEntityStruct data)
+{
+    this->SmartEntity::constructEntity(data.smartEntityStruct);
+    this->enterType = data.enterType;
+    this->enterDuration = data.enterDuration;
+}
+
 void ShooterEntity::tick(float dT)
 {
     if(this->timePassed > this->enterDuration) {
@@ -50,10 +57,6 @@ ShooterState::ShooterState()
 }
 
 ShooterState::~ShooterState()
-{
-}
-
-void ShooterState::constructEntity(ShooterEntityStruct data)
 {
 }
 
