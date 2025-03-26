@@ -1,6 +1,12 @@
 #pragma once
 #include "GameState.hpp"
 
+class ShotEvent : public EntityEvent {
+public:
+    sf::Vector2f targetPos;
+};
+
+
 enum class ScreenEnterType {
     None,
     TopIn,   

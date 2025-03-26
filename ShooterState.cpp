@@ -45,7 +45,7 @@ void ShooterEntity::init(BatchRenderer *batchRenderer)
         auto event = std::make_unique<MoveToPosEaseEvent>();
         event->durationTime = this->enterDuration;
         event->easeDuration = this->enterDuration;
-        event->easeMoveType = EaseMoveType::EaseOutBack;
+        event->easeMoveType = EaseType::EaseOutBack;
         event->willStopOnDone = true;
         event->startPos = sf::Vector2f(this->position.x, -this->size.y);
         event->targetPos = this->position;

@@ -95,7 +95,7 @@ bool MoveToPosEvent::tick(float dT, Entity *entity)
     return false;
 }
 
-MoveToPosEaseEvent::MoveToPosEaseEvent() : easeMoveType(EaseMoveType::EaseOutSine), easeDuration(1)
+MoveToPosEaseEvent::MoveToPosEaseEvent() : easeMoveType(EaseType::EaseOutSine), easeDuration(1)
 {
 }
 
@@ -111,15 +111,15 @@ bool MoveToPosEaseEvent::tick(float dT, Entity *entity)
     this->EntityEvent::tick(dT, entity);
     float progress = this->timePassed / this->easeDuration;
     if(progress > 1) progress = 1;
-    if(this->easeMoveType == EaseMoveType::EaseOutSine)
+    if(this->easeMoveType == EaseType::EaseOutSine)
     {
         entity->position = this->startPos + (this->targetPos - this->startPos) * sin(progress * 3.14159f / 2);
-    } else if(this->easeMoveType == EaseMoveType::EaseOutBack)
+    } else if(this->easeMoveType == EaseType::EaseOutBack)
     {
         float c1 = 1.70158f;
         float c3 = c1+1;
         entity->position = this->startPos + (this->targetPos - this->startPos) * easeOutBack(progress);
-    } else if(this->easeMoveType == EaseMoveType::EaseOutCirc)
+    } else if(this->easeMoveType == EaseType::EaseOutCirc)
     {
         entity->position = this->startPos + (this->targetPos - this->startPos) * sqrt(1 - progress * progress);
     }

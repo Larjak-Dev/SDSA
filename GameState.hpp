@@ -59,7 +59,7 @@ public:
     bool tick(float dT, Entity* entity);
 };
 
-enum class EaseMoveType {
+enum class EaseType {
     EaseOutSine, EaseOutBack, EaseOutCirc
 };
 
@@ -67,7 +67,7 @@ class MoveToPosEaseEvent : public EntityEvent {
 public:
     sf::Vector2f startPos;
     sf::Vector2f targetPos;
-    EaseMoveType easeMoveType;
+    EaseType easeMoveType;
     float easeDuration = 1;
 
     MoveToPosEaseEvent();
