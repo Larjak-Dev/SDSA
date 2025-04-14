@@ -1,4 +1,58 @@
 #include "ShooterState.hpp"
+#include <iostream>
+
+CustomShotEvent::CustomShotEvent()
+{
+}
+
+bool CustomShotEvent::tick(float dT, SmartEntity *entity)
+{
+    this->EntityEvent::tick(dT, entity);
+    if(this->customFunction != nullptr) {
+        return this->customFunction(dT, (ShotEntity*)entity, this->mainPlayer);
+    }
+    std::cout << "No custom function set!" << std::endl;
+    return true;
+}
+
+ShotEntity::ShotEntity() : SmartEntity()
+{
+}
+
+ShotEntity::~ShotEntity()
+{
+}
+
+void ShotEntity::init(BatchRenderer *batchRenderer)
+{
+    this->SmartEntity::init(batchRenderer);
+}
+
+void ShotEntity::constructEntity(ShotEntityStruct data)
+{
+    this->SmartEntity::constructEntity(data.smartEntityStruct);
+    this->speed = data.speed;
+    this->damage = data.damage;
+}
+
+void ShotEntity::tick(float dT)
+{
+    this->SmartEntity::tick(dT);
+}
+
+
+///Shot Event
+ShotSpreadEvent::ShotSpreadEvent()
+{
+
+}
+
+bool ShotSpreadEvent::tick(float dT, SmartEntity *entity)
+{
+    ShooterEntity* shooterEntity = (ShooterEntity*)entity;
+    shooterEntity
+    return true;
+}
 
 ShooterEntity::ShooterEntity() : SmartEntity(), enterType(ScreenEnterType::None), enterDuration(0), isFighting(false)
 {
@@ -21,11 +75,6 @@ void ShooterEntity::tick(float dT)
         this->isFighting = true;
     } else if (enterEvent != nullptr) {
         this->enterEvent->tick(dT, this);
-    }
-
-    if(this->isFighting)
-    {
-        this->tickFight(dT);
     }
     SmartEntity::tick(dT);
 }
@@ -76,3 +125,4 @@ void ShooterState::tick(float dT)
 {
     this->GameState::tick(dT);
 }
+

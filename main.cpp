@@ -7,7 +7,7 @@ int main() {
     std::cout << "Starting App! \n";
 
     AppHandler appHandler;
-    appHandler.setUp(800, 600, "SFML Window");
+    appHandler.setUp(800, 600, "SDSA");
 
     // GameState gameState;
     LevelOne levelOne;

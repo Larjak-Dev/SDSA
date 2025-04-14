@@ -2,12 +2,14 @@
 #include "AppHandler.hpp"
 #include <memory>
 #include <queue>
+#include <functional>
 
 class Entity {
     public:
     sf::Vector2f size;
     sf::Vector2f position;
     sf::Vector2f velocity;
+    sf::Vector2f accelerationVelocity;
     sf::Vector2f acceleration;
     bool isInit = false;
 
@@ -26,6 +28,8 @@ class Entity {
     
 };
 
+class SmartEntity;
+
 /// ENTITY EVENTS
 
 class EntityEvent {
@@ -39,7 +43,7 @@ public:
     EntityEvent();
     virtual ~EntityEvent() = default;
 
-    virtual bool tick(float dT, Entity* entity);
+    virtual bool tick(float dT, SmartEntity* entity);
 
 
 };
@@ -56,12 +60,18 @@ public:
 
     MoveToPosEvent();
 
-    bool tick(float dT, Entity* entity);
+    bool tick(float dT, SmartEntity* entity);
 };
 
 enum class EaseType {
-    EaseOutSine, EaseOutBack, EaseOutCirc
+    Default, EaseOutSine, EaseOutBack, EaseOutCirc
 };
+
+float easeOutSine(float x);
+float easeOutBack(float x);
+float easeOutCirc(float x);
+
+std::function<float(float)> getEaseFunction(EaseType type);
 
 class MoveToPosEaseEvent : public EntityEvent {
 public:
@@ -72,7 +82,19 @@ public:
 
     MoveToPosEaseEvent();
 
-    bool tick(float dT, Entity* entity);
+    bool tick(float dT, SmartEntity* entity);
+};
+
+class AlteratingVelocityEvent : public EntityEvent {
+public:
+    float angle = 0;
+    float maxVelocity = 2;
+    float time = 1;
+    EaseType easeMoveType;
+
+    AlteratingVelocityEvent();
+
+    bool tick(float dT, SmartEntity* entity);
 };
 
 class HitBox {
@@ -91,7 +113,9 @@ class SmartEntity : public Entity {
 public:
     float timePassed = 0;
     std::list<std::unique_ptr<EntityEvent>> events; // List of active events
-    std::queue<std::unique_ptr<EntityEvent>> eventQueue; // Queued event that is going to happen 
+    std::queue<std::unique_ptr<EntityEvent>> eventQueue; // Queued events that is going to happen in serie.
+    std::list<std::unique_ptr<EntityEvent>> eventLoop; // Looped queue of events that is going to happen in serie.
+    std::list<std::unique_ptr<EntityEvent>> eventLoop2; // Second Looped queue of events that is going to happen in serie.
 
     SmartEntity();
     ~SmartEntity();
@@ -99,7 +123,6 @@ public:
 
     void init(BatchRenderer* bt);
     void tick(float dT);
-    void tickFight(float dT);
 
 };
 

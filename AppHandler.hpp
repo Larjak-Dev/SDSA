@@ -8,7 +8,7 @@
 #include <math.h>
 
 
-
+class AppHandler;
 
 class Camera {
     sf::Vector2f currentPos;
@@ -71,6 +71,7 @@ public:
     ~FrameState();
 
     virtual void tick(float dT);
+    virtual void tickMenu(float dT, AppHandler* appHandler);
     virtual void render(sf::RenderTarget* window);
     virtual void handleInput();
 };
@@ -78,6 +79,7 @@ public:
 class AppHandler {
     FrameState* currentFrameState;
     sf::Clock clock;
+    float lowCostTimePassed = 0;
     
 public:
     sf::RenderWindow window;
